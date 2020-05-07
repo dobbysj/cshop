@@ -14,8 +14,6 @@
 <script src="js/input_custom.js"></script>
 <script type="text/javascript" src="js/admin_header.js"></script> 
 
-<!-- <script src="js/input_custom.js"></script> -->
-<!-- <script type="text/javascript" src="js/admin_header.js"></script>  -->
 <style>
 #eTitle{
     width: 600px;
@@ -27,22 +25,22 @@
  	<jsp:include page="module/ad_navi.jsp"></jsp:include>
  
     <section>
-    <h1>이벤트 등록</h1>
+    <h1>공지 등록</h1>
     <div class="container">
-      <form name="event" id="inputform" action="eventregi.do" method="post" enctype="multipart/form-data">
+      <form name="notice" id="inputform" action="notiregi.do" method="post" enctype="multipart/form-data">
 
         <div class="input_set">
           <div class="input_1">
             <label class="input_label">제목</label>
             <div class="just_cont">
-              <input type="text" name="eTitle" id="eTitle">
+              <input type="text" name="ntitle" id="eTitle">
             </div>
           </div>
         
           <div class="input_1">
             <label class="input_label">내용작성</label>
             <div class="just_cont">
-              <textarea id="txt_wr" name="eContent" cols="127" rows="10"
+              <textarea id="txt_wr" name="ncontent" cols="127" rows="10"
                 maxlength="1000" placeholder="내용을 입력해주세요"></textarea>
               <div class="txt_wr_cnt">
                 <span class="counter">0</span><span id="test">/1000자</span>
@@ -61,20 +59,11 @@
             <div class="just_cont">
 <!--               <div class="file_frame"> -->
 <!--                 <span class="temp"></span>  -->
-                <input type="file" name="eImg_thumb" >
-                <input type="file" name="eImg_cont" >
+                <input type="file" name="nattch" >
 <!--               </div> -->
               <ul class="file_noti listst">
                 <li>2장 등록 (PNG, JPEG, JPG, GIF 포맷)</li>
               </ul>
-            </div>
-          </div>
-          
-          <div class="input_1">
-            <label class="input_label">기간</label>
-            <div class="just_cont">
-                <input type="date" name="eDate1" >
-                <input type="date" name="eDate2" >
             </div>
           </div>
           
