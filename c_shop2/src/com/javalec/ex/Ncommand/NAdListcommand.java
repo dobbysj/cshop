@@ -1,4 +1,4 @@
-package com.javalec.ex.Ecommand;
+package com.javalec.ex.Ncommand;
 
 import java.util.ArrayList;
 
@@ -7,13 +7,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.javalec.ex.EDao.Edao;
 import com.javalec.ex.EDto.Edto;
+import com.javalec.ex.Ecommand.Ecommand;
+import com.javalec.ex.Ndao.Ndao;
+import com.javalec.ex.Ndto.Ndto;
 
-public class EAdListcommand implements Ecommand {
+public class NAdListcommand implements Ecommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 
-		Edao edao = new Edao();
+		Ndao ndao = new Ndao();
 		//페이징 관련 
 		//출력할 페이지
 		int page=1;
@@ -25,9 +28,7 @@ public class EAdListcommand implements Ecommand {
 		//페이지 레인지
 		int range=10;
 		//전체 게시글 카운트
-		int listcount = edao.listCount_ad(0); //어드민페이지 전체 이벤트 게시글 카운트
-		int inprog_lc = edao.listCount_ad(1); //어드민페이지 진행중인 이벤트 게시글 카운트
-		int end_lc = listcount - inprog_lc; //어드민페이지 종료된 이벤트 게시글 카운트
+		int listcount = ndao.listcount("", "");
 		System.out.println("listcount"+listcount);
 		//전체 레인지의 최종 페이지 넘버
 		int maxpage = ( (listcount - 1) / limit ) + 1;
@@ -41,19 +42,18 @@ public class EAdListcommand implements Ecommand {
 		
 		
 		//출력 관련
-		ArrayList<Edto> elist = new ArrayList<Edto>();
-		elist = edao.eventList2(page, limit);
-		System.out.println("사이즈 : "+elist.size());
+		ArrayList<Ndto> nlist = new ArrayList<Ndto>();
+		nlist = ndao.notilist(page, limit, "","");
+		System.out.println("사이즈 : "+nlist.size());
 		
 		//리퀘스트에 담아 보내기
-		request.setAttribute("elist", elist);
+		request.setAttribute("nlist", nlist);
 		request.setAttribute("page", page);
 		request.setAttribute("startpage", startpage);
 		request.setAttribute("endpage", endpage);
 		request.setAttribute("maxpage", maxpage);
 		request.setAttribute("listcount", listcount);
-		request.setAttribute("inprog_lc", inprog_lc);
-		request.setAttribute("end_lc", end_lc);
+		
 	}
 
 }

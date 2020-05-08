@@ -36,7 +36,7 @@
             <ul id="list_ul_2">
                 <c:forEach var="elist" items="${ elist }">
                     <li>
-                        <a href="eventview.do?eId=${ elist.eId }"><img src="upload/${ elist.eImg_thumb }"></a>
+                        <a href="eventview.do?eId=${ elist.eId }"><img src="${pageContext.request.contextPath }/upload/${ elist.eImg_thumb }"></a>
                         <p>
                             EVENT
                         </p>

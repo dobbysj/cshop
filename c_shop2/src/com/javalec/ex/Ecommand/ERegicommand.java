@@ -21,7 +21,7 @@ public class ERegicommand implements Ecommand {
 		String eContent="";
 		String eDate1="";
 		String eDate2="";
-		String path = "Users/soojilee/upload";
+		String path = "Z:/upload";
 //				request.getSession().getServletContext().getRealPath("upload");
 		int size = 1024 * 1024 * 10;
 		String eImg_thumb="";
@@ -39,14 +39,12 @@ public class ERegicommand implements Ecommand {
 			eImg_thumb = multi.getFilesystemName(name1);
 			String name2 = (String)files.nextElement();
 			eImg_cont = multi.getFilesystemName(name2);
-			System.out.println("파일명 : "+eImg_thumb);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		int check = edao.eventRegi(eTitle, eContent, eImg_thumb, eImg_cont, eDate1, eDate2);
-		System.out.println(check);
 	}
 
 }

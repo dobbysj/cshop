@@ -16,7 +16,7 @@
 <header>
         <div>
             <div id="top">
-            <a href="admin_main.html"><p>LMS <span>STARTUP</span> Type</p></a>
+            <a href="ad_main.do"><p>LMS <span>STARTUP</span> Type</p></a>
             <ul>
                 <li>관리자</li>
                 <li><img src="images/logout.png"></li>

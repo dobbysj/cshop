@@ -18,33 +18,31 @@
     <jsp:include page="module/ad_navi.jsp"></jsp:include>
     
 	<section>
-		<h1>전체 이벤트 리스트</h1>
+		<h1>전체 공지 리스트</h1>
 		<div id="main_list">
 			<div id="main_user_list">
-				<div class="list_count">총 게시글 수 :${ listcount } / 진행 중 이벤트 : ${ inprog_lc } / 종료된 이벤트 : ${ end_lc }</div>
+				<div class="list_count">총 게시글 수 :${ listcount }</div>
 				<div>
 					<table border="1">
 						<tr>
 							<th>No.</th>
-							<th>이벤트 아이디</th>
+							<th>ID</th>
 							<th>제목</th>
 							<th>내용</th>
-							<th>썸네일</th>
-							<th>이미지</th>
-							<th>시작일</th>
-							<th>종료일</th>
+							<th>날짜</th>
+							<th>조회수</th>
+							<th>첨부파일</th>
 						</tr>
                         
-                        <c:forEach var="elist2" items="${ elist }">
+                        <c:forEach var="nlist" items="${ nlist }">
     						<tr>
-    							<td>${ elist2.rnum }</td>
-    							<td>${ elist2.eId }</td>
-    							<td><a href="ad_ev_modify.do?eId=${ elist2.eId }">${ elist2.eTitle }</a></td>
-    							<td>${ elist2.eContent }</td>
-    							<td>${ elist2.eImg_thumb }</td>
-    							<td>${ elist2.eImg_cont }</td>
-    							<td>${ elist2.eDate1 }</td>
-    							<td>${ elist2.eDate2 }</td>
+    							<td>${ nlist.nrnum }</td>
+    							<td>${ nlist.nid }</td>
+    							<td><a href="ad_noti_modify.do?nid=${ nlist.nid }">${ nlist.ntitle }</a></td>
+    							<td>${ nlist.ncontent }</td>
+    							<td>${ nlist.ndate }</td>
+    							<td>${ nlist.nhit }</td>
+    							<td><a href="${pageContext.request.contextPath }/upload/${nlist.nattch}">${ nlist.nattch }</a></td>
     						</tr>
                         
                         </c:forEach>
@@ -55,13 +53,13 @@
         <div id="page_num">
             
             <ul class="page_num">
-                <a href="ad_ev_list.do?page=1"><li class = "first"><<</li></a>
+                <a href="ad_noti_list.do?page=1"><li class = "first"><<</li></a>
                 
                 <c:if test="${ page<=1 }">
                      <li class = "prev"><</li>
                 </c:if>
                 <c:if test="${ page>1 }">
-                    <a href="ad_ev_list.do?page=${ page-1 }"><li class = "prev"><</li></a>
+                    <a href="ad_noti_list.do?page=${ page-1 }"><li class = "prev"><</li></a>
                 </c:if>
                 
                 <c:forEach var="a" begin="${ startpage }" end="${ endpage }" step="1">
@@ -70,7 +68,7 @@
                             <li class = "num"><div>${ a }</div></li>
                         </c:when>
                         <c:when test="${ a != page }">
-                            <a href="ad_ev_list.do?page=${ a }"><li class = "num"><div>${ a }</div></li></a>
+                            <a href="ad_noti_list.do?page=${ a }"><li class = "num"><div>${ a }</div></li></a>
                         </c:when>
                     </c:choose>
                 </c:forEach>
@@ -79,16 +77,16 @@
                     <li class = "next">></li>
                 </c:if>
                 <c:if test="${ page<maxpage }">
-                    <a href="ad_ev_list.do?page=${ page+1 }"><li class = "next">></li></a>
+                    <a href="ad_noti_list.do?page=${ page+1 }"><li class = "next">></li></a>
                 </c:if>
                 
-                <a href="ad_ev_list.do?page=${ maxpage }">
+                <a href="ad_noti_list.do?page=${ maxpage }">
                     <li class = "last">>></li>
                 </a>
             </ul>
         </div>
 
-        <div><a href="eventregiview.do">이벤트 등록</a></div>
+        <div><a href="notiregiview.do">공지 등록</a></div>
 
 
 

@@ -83,7 +83,7 @@
         </div>
 
         <div class="bttn_set">
-          <button onclick="location.href='#'">취소</button>
+          <button onclick="location.href='ad_main.do'">취소</button>
           <button type="submit">확인</button>
         </div>
 

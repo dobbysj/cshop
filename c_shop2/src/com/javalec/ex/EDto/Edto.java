@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class Edto {
 
 	public Edto() {}
-	public Edto(int eId, String eTitle, String eContent, String eImg_thumb, String eImg_cont, String eDate1, String eDate2) {
+	public Edto(int eId, String eTitle, String eContent, String eImg_thumb, String eImg_cont, Timestamp eDate1, Timestamp eDate2) {
 		this.eId=eId;
 		this.eTitle=eTitle;
 		this.eContent=eContent;
@@ -17,7 +17,7 @@ public class Edto {
 	
 	public int eId, echeck, rnum;
 	public String eTitle, eContent, eImg_thumb, eImg_cont;
-	public String eDate1, eDate2;
+	public Timestamp eDate1, eDate2;
 
 	
 	public int getRnum() {
@@ -65,16 +65,16 @@ public class Edto {
 	public void seteImg_cont(String eImg_cont) {
 		this.eImg_cont = eImg_cont;
 	}
-	public String geteDate1() {
+	public Timestamp geteDate1() {
 		return eDate1;
 	}
-	public void seteDate1(String eDate1) {
+	public void seteDate1(Timestamp eDate1) {
 		this.eDate1 = eDate1;
 	}
-	public String geteDate2() {
+	public Timestamp geteDate2() {
 		return eDate2;
 	}
-	public void seteDate2(String eDate2) {
+	public void seteDate2(Timestamp eDate2) {
 		this.eDate2 = eDate2;
 	}
 }

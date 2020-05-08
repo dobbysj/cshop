@@ -36,6 +36,38 @@ public class Ndao {
 	Ndto ndto;
 	ArrayList<Ndto> nlist = new ArrayList<Ndto>();
 	
+	//공지 하나 가져오기
+	public Ndto notiview(int nid) {
+		System.out.println("nid : "+nid);
+		System.out.println("공지를 가지러 왔다.");
+		sql = "select * from noti_board where nid=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, nid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				ntitle = rs.getString("ntitle");
+				ncontent = rs.getString("ncontent");
+				nattch = rs.getString("nattch");
+				nhit = rs.getInt("nhit");
+				ndate = rs.getTimestamp("ndate");
+				ndto = new Ndto(0, nid, ntitle, ncontent, nattch, ndate, nhit);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return ndto;
+	}
+	
 	//리스트 전체 출력하기
 	public ArrayList<Ndto> notilist(int page, int limit, String opt, String search){
 		
@@ -158,10 +190,83 @@ public class Ndao {
 	}
 	
 	
+	///////////이하 어드민//////////
+	
+	//어드민 공지 삭제 delete
+	public int notiDelete(int nid) {
+		int check = 0;
+		sql = "delete from noti_board where nid=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, nid);
+			check = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return check;
+	}
 	
 	
+	//어드민 공지 수정 update
+	public int notiModi(int nid, String ntitle, String ncontent, String nattch) {
+		int check = 0;
+		sql = "update noti_board set ntitle=?, ncontent=?, nattch=? where nid=?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, ntitle);
+			pstmt.setString(2, ncontent);
+			pstmt.setString(3, nattch);
+			pstmt.setInt(4, nid);
+			check = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return check;
+	} //notiModi
 	
 	
+	//어드민 공지 등록
+	public int notiRegi(String ntitle, String ncontent, String nattch) {
+		int check=0;
+		sql = "insert into noti_board values (noti_seq.nextval,?,?,sysdate,0,?)";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, ntitle);
+			pstmt.setString(2, ncontent);
+			pstmt.setString(3, nattch);
+			check = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return check;
+	}//공지입력
+	
+	//어드민 공지 
 	
 	
 	

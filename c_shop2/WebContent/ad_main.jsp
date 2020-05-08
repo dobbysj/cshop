@@ -16,6 +16,7 @@
 
 <jsp:include page="module/ad_navi.jsp"></jsp:include>
 <p><a href="ad_ev_list.do">이벤트 리스트</a></p>
+<p><a href="ad_noti_list.do">공지사항 리스트</a></p>
 
 </body>
 </html>
