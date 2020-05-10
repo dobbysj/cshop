@@ -17,7 +17,7 @@
 	    $(function(){
 	    	var logch = "${check}";
 	    	var logok = "${logok}";
-	    	if(logch==-1 || logch==0){
+	    	if(logch === "-1" || logch === "0"){
          		alert(logok);	
         	} 
     	});

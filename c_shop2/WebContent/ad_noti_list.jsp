@@ -16,6 +16,8 @@
 	<body>
 	
     <jsp:include page="module/ad_navi.jsp"></jsp:include>
+    <jsp:include page="module/ad_navi_board.jsp"/> 
+    
     
 	<section>
 		<h1>전체 공지 리스트</h1>

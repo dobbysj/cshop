@@ -24,6 +24,8 @@
 <body>
  
  	<jsp:include page="module/ad_navi.jsp"></jsp:include>
+ 	
+ 	<jsp:include page="module/ad_navi_board.jsp"/>
  
     <section>
     <h1>이벤트 등록</h1>
@@ -80,13 +82,14 @@
             <div class="just_cont">
                 <input type="date" name="eDate1" value="${  edto.geteDate1() }">
                 <input type="date" name="eDate2">
-                <input type="hidden" name="eDate12" value="${  edto.geteDate1() }">
-                <input type="hidden" name="eDate22" value="${ edto.geteDate2() }">
+                <fmt:formatDate value="${ edto.eDate1 }" pattern="yyyy/MM/dd" var="eDate11"/>
+                <fmt:formatDate value="${ edto.eDate2 }" pattern="yyyy/MM/dd" var="eDate22"/>
                 <ul class="file_noti listst">
-                <li>기존 시작일 : <fmt:formatDate value="${ edto.eDate1 }" pattern="yyyy/MM/dd"/> </li>
-                <li>기존 종료일 : ${ edto.eDate2 }</li>
+                <li>기존 시작일 : <input type="text" name="eDate12" value="${ eDate11 }" readonly> </li>
+                <li>기존 종료일 : <input type="text" name="eDate22" value="${ eDate22 }" readonly> </li>
                 <li>수정하지 않을 시 기존 시작, 종료일로 유지됩니다.</li>
-              </ul>
+              	</ul>
+                
             </div>
           </div>
         </div>

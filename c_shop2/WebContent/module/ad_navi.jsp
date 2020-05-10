@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:if test="${ empty sessionScope.aid }">
+    <script>
+    	location.href="ad_login.jsp";
+    </script>
+</c:if>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +24,7 @@
             <div id="top">
             <a href="ad_main.do"><p>LMS <span>STARTUP</span> Type</p></a>
             <ul>
-                <li>관리자</li>
+                <a href="adminLogout.do"><li>${ sessionScope.aid }</li></a>
                 <li><img src="images/logout.png"></li>
                 <li>
                     <select>
@@ -59,8 +65,8 @@
                 </li>
                 <li><a href="#"><span></span>홈페이지</a>
                     <ul class="sub_list">
-                    <li><a href="ad_notice_list.html">공지사항 관리</a></li>
-                    <li><a href="ad_event_list.html">이벤트  관리</a></li>
+                    <li><a href="ad_noti_list.do">공지사항 관리</a></li>
+                    <li><a href="ad_ev_list.do">이벤트  관리</a></li>
                     <li><a href="#">회원 관리</a></li>
                      </ul>
                 </li>
@@ -82,30 +88,30 @@
             </div>
         </div>
     </header>
-    <nav>
-        <h2><em></em>회원/강사</h2>
-        <div  id="student" class="user">
-            <a>학생 관리<span id="s_icon" class="icon_minus"></span></a>
-            <div id="stu_list">
-                <ul>
-                    <li><a href="#"><img src="images/icon_title_left.png">학생 등록</a></li>
-                    <li><a href="#"><img src="images/icon_title_left.png">학생 리스트(탈퇴)</a></li>
-                    <li><a href="#"><img src="images/icon_title_left.png">학생등급 관리</a></li>
-                    <li><a href="#"><img src="images/icon_title_left.png">학생등급 분류/해택</a></li>
-                    <li><a href="#"><img src="images/icon_title_left.png">회원 상담 관리</a></li>
-                </ul>
-            </div>
-        </div>
-        <div  id="teacher" class="user">
-            <a>강사 관리<span id="t_icon" class="icon_minus2"></span></a>
-            <div id="tes_list">
-                <ul>
-                    <li><a href="#"><img src="images/icon_title_left.png">강사 등록</a></li>
-                    <li><a href="#"><img src="images/icon_title_left.png">강사 리스트</a></li>
-                    <li><a href="#"><img src="images/icon_title_left.png">강사 리스트(사용중지)</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!--     <nav> -->
+<!--         <h2><em></em>회원/강사</h2> -->
+<!--         <div  id="student" class="user"> -->
+<!--             <a>학생 관리<span id="s_icon" class="icon_minus"></span></a> -->
+<!--             <div id="stu_list"> -->
+<!--                 <ul> -->
+<!--                     <li><a href="#"><img src="images/icon_title_left.png">학생 등록</a></li> -->
+<!--                     <li><a href="#"><img src="images/icon_title_left.png">학생 리스트(탈퇴)</a></li> -->
+<!--                     <li><a href="#"><img src="images/icon_title_left.png">학생등급 관리</a></li> -->
+<!--                     <li><a href="#"><img src="images/icon_title_left.png">학생등급 분류/해택</a></li> -->
+<!--                     <li><a href="#"><img src="images/icon_title_left.png">회원 상담 관리</a></li> -->
+<!--                 </ul> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--         <div  id="teacher" class="user"> -->
+<!--             <a>강사 관리<span id="t_icon" class="icon_minus2"></span></a> -->
+<!--             <div id="tes_list"> -->
+<!--                 <ul> -->
+<!--                     <li><a href="#"><img src="images/icon_title_left.png">강사 등록</a></li> -->
+<!--                     <li><a href="#"><img src="images/icon_title_left.png">강사 리스트</a></li> -->
+<!--                     <li><a href="#"><img src="images/icon_title_left.png">강사 리스트(사용중지)</a></li> -->
+<!--                 </ul> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </nav> -->
 </body>
 </html>

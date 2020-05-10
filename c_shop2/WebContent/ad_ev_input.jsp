@@ -25,7 +25,9 @@
 <body>
  
  	<jsp:include page="module/ad_navi.jsp"></jsp:include>
- 
+ 	 <jsp:include page="module/ad_navi_board.jsp"/>
+ 	
+ 	
     <section>
     <h1>이벤트 등록</h1>
     <div class="container">

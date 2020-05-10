@@ -28,7 +28,8 @@ public class EAdModifycommand implements Ecommand {
 		String eDate2="";
 		String eDate12="";
 		String eDate22="";
-		String path = "Z:/upload";
+		String path = "/Users/soojilee/upload";
+//		"Z:/upload"; 
 		int size = 1024 * 1024 * 10;
 		
 		try {
@@ -51,18 +52,25 @@ public class EAdModifycommand implements Ecommand {
 				eDate2 = multi.getParameter("eDate22");
 			}
 			
+			
+//			이미지
 			eImg_thumb = multi.getFilesystemName("eImg_thumb");
 			eImg_thumb2 = multi.getParameter("eImg_thumb2");
 			if(eImg_thumb==null) {
 				eImg_thumb = eImg_thumb2;
 			}
-			System.out.println("썸네일 미 수정했을 때 thumb : "+eImg_thumb);
+			System.out.println("thumb : "+eImg_thumb);
+			
+			
 			eImg_cont = multi.getFilesystemName("eImg_cont");
 			eImg_cont2 = multi.getParameter("eImg_cont2");
 			if(eImg_cont==null) {
 				eImg_cont = eImg_cont2;
 			}
-			System.out.println("썸네일 미 수정했을 때 cont : "+eImg_cont);
+			System.out.println("cont : "+eImg_cont);
+			
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

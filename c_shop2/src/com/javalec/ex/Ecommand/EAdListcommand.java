@@ -28,17 +28,13 @@ public class EAdListcommand implements Ecommand {
 		int listcount = edao.listCount_ad(0); //어드민페이지 전체 이벤트 게시글 카운트
 		int inprog_lc = edao.listCount_ad(1); //어드민페이지 진행중인 이벤트 게시글 카운트
 		int end_lc = listcount - inprog_lc; //어드민페이지 종료된 이벤트 게시글 카운트
-		System.out.println("listcount"+listcount);
 		//전체 레인지의 최종 페이지 넘버
 		int maxpage = ( (listcount - 1) / limit ) + 1;
-		System.out.println("maxpage"+maxpage);
 		//한 레인지의 처음 페이지 넘버
 		int startpage = ((page-1)/range)*range+1;
 		//한 레인지의 마지막 페이지넘버
 		int endpage = maxpage;
 		if(endpage>startpage+range-1) endpage = startpage+range-1;
-		System.out.println("endpage"+endpage);
-		
 		
 		//출력 관련
 		ArrayList<Edto> elist = new ArrayList<Edto>();

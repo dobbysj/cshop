@@ -122,7 +122,6 @@ public class Edao {
 				eDate1 = rs.getTimestamp("eDate1");
 				eDate2 = rs.getTimestamp("eDate2");
 				edto = new Edto(eId, eTitle, eContent, eImg_thumb, eImg_cont, eDate1, eDate2);
-				System.out.println("eDate1입니다....."+eDate1);
 				elist.add(edto);
 			}
 		} catch (Exception e) {

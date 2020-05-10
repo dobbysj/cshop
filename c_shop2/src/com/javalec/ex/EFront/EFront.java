@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javalec.ex.Admincommand.AdLogincommand;
+import com.javalec.ex.Admincommand.AdLogoutcommand;
+import com.javalec.ex.Admincommand.Maincommand;
 import com.javalec.ex.Ecommand.EAdListcommand;
 import com.javalec.ex.Ecommand.EAdModiViewcommand;
 import com.javalec.ex.Ecommand.EAdModifycommand;
@@ -59,6 +62,15 @@ public class EFront extends HttpServlet {
 		if(com.equals("/main.do")) {
 			pageView = "main.jsp"; //메인
 		} 
+
+		
+		//어드민 메인
+		if(com.equals("/ad_main.do")) {
+			ecmd = new Maincommand();
+			ecmd.execute(request, response);
+			pageView="ad_main.jsp"; //어드민 메인
+		}
+		
 		
 		//로그인아웃
 		if(com.equals("/loginok.do")) {
@@ -74,6 +86,20 @@ public class EFront extends HttpServlet {
 			ecmd.execute(request, response);
 			pageView = "main.jsp"; //로그아웃 > 메인
 		}
+		
+		
+		//어드민 로그인아웃
+		if(com.equals("/adminLogin.do")) {
+			ecmd = new AdLogincommand();
+			ecmd.execute(request, response);
+			String view = (String)request.getAttribute("view");
+			pageView = view;
+		} else if(com.equals("/adminLogout.do")) {
+			ecmd = new AdLogoutcommand();
+			ecmd.execute(request, response);
+			pageView = "ad_login.jsp";
+		}
+		
 
 		//회원가입
 		if(com.equals("/joinview.do")) {
@@ -89,7 +115,8 @@ public class EFront extends HttpServlet {
 			String view = (String)request.getAttribute("view");
 			pageView = view; //회원가입 시 회원가입 성공 혹은 회원가입창 분기
 		} 
-
+		
+		
 		//이벤트
 		if(com.equals("/eventlist.do")) {
 			ecmd = new EListcommand();
@@ -132,8 +159,6 @@ public class EFront extends HttpServlet {
 			ecmd = new Nlistcommand();
 			ecmd.execute(request, response);
 			pageView = "notice.jsp"; //공지사항 검색 결과 리스트
-		} else if(com.equals("/ad_main.do")) {
-			pageView="ad_main.jsp"; //어드민 메인
 		} else if(com.equals("/notiregi.do")) {
 			ecmd = new NRegicommand();
 			ecmd.execute(request, response);

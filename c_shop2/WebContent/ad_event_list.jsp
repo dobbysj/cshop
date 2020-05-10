@@ -16,6 +16,8 @@
 	<body>
 	
     <jsp:include page="module/ad_navi.jsp"></jsp:include>
+    <jsp:include page="module/ad_navi_board.jsp"/> 
+    
     
 	<section>
 		<h1>전체 이벤트 리스트</h1>
@@ -51,44 +53,44 @@
                         
 					</table>
 
-<!-- 페이징 -->
-        <div id="page_num">
-            
-            <ul class="page_num">
-                <a href="ad_ev_list.do?page=1"><li class = "first"><<</li></a>
-                
-                <c:if test="${ page<=1 }">
-                     <li class = "prev"><</li>
-                </c:if>
-                <c:if test="${ page>1 }">
-                    <a href="ad_ev_list.do?page=${ page-1 }"><li class = "prev"><</li></a>
-                </c:if>
-                
-                <c:forEach var="a" begin="${ startpage }" end="${ endpage }" step="1">
-                    <c:choose>
-                        <c:when test="${ a == page }">
-                            <li class = "num"><div>${ a }</div></li>
-                        </c:when>
-                        <c:when test="${ a != page }">
-                            <a href="ad_ev_list.do?page=${ a }"><li class = "num"><div>${ a }</div></li></a>
-                        </c:when>
-                    </c:choose>
-                </c:forEach>
-                
-                <c:if test="${ page>=maxpage }">
-                    <li class = "next">></li>
-                </c:if>
-                <c:if test="${ page<maxpage }">
-                    <a href="ad_ev_list.do?page=${ page+1 }"><li class = "next">></li></a>
-                </c:if>
-                
-                <a href="ad_ev_list.do?page=${ maxpage }">
-                    <li class = "last">>></li>
-                </a>
-            </ul>
-        </div>
-
-        <div><a href="eventregiview.do">이벤트 등록</a></div>
+			<!-- 페이징 -->
+			        <div id="page_num">
+			            
+			            <ul class="page_num">
+			                <a href="ad_ev_list.do?page=1"><li class = "first"><<</li></a>
+			                
+			                <c:if test="${ page<=1 }">
+			                     <li class = "prev"><</li>
+			                </c:if>
+			                <c:if test="${ page>1 }">
+			                    <a href="ad_ev_list.do?page=${ page-1 }"><li class = "prev"><</li></a>
+			                </c:if>
+			                
+			                <c:forEach var="a" begin="${ startpage }" end="${ endpage }" step="1">
+			                    <c:choose>
+			                        <c:when test="${ a == page }">
+			                            <li class = "num"><div>${ a }</div></li>
+			                        </c:when>
+			                        <c:when test="${ a != page }">
+			                            <a href="ad_ev_list.do?page=${ a }"><li class = "num"><div>${ a }</div></li></a>
+			                        </c:when>
+			                    </c:choose>
+			                </c:forEach>
+			                
+			                <c:if test="${ page>=maxpage }">
+			                    <li class = "next">></li>
+			                </c:if>
+			                <c:if test="${ page<maxpage }">
+			                    <a href="ad_ev_list.do?page=${ page+1 }"><li class = "next">></li></a>
+			                </c:if>
+			                
+			                <a href="ad_ev_list.do?page=${ maxpage }">
+			                    <li class = "last">>></li>
+			                </a>
+			            </ul>
+			        </div>
+			
+			        <div><a href="eventregiview.do">이벤트 등록</a></div>
 
 
 
