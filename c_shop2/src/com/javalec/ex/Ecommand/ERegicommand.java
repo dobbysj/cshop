@@ -21,8 +21,8 @@ public class ERegicommand implements Ecommand {
 		String eContent="";
 		String eDate1="";
 		String eDate2="";
-		String path = "/Users/soojilee/upload";
-//		String path = "Z:/upload";
+//		String path = "/Users/soojilee/upload";
+		String path = "Z:/upload";
 //				request.getSession().getServletContext().getRealPath("upload");
 		int size = 1024 * 1024 * 10;
 		String eImg_thumb="";

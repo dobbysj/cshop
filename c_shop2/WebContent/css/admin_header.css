@@ -38,7 +38,6 @@ a{
 #top ul{
 	float: right;
 	color: white;
-	margin-right: 400px;
 	padding-top: 5px;
 }
 
@@ -68,6 +67,15 @@ a{
 }
 
 /* 20.03.31 수정 */
+#top{
+    min-width: 700px;
+}
+
+
+.admin_gnb>ul{
+    min-width: 1800px;
+    
+}
 
 .admin_gnb>ul>li>a>span{
   display: inline-block;

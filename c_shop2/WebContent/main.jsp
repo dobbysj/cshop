@@ -16,6 +16,11 @@
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/prefixfree.dynamic-dom.min.js"></script>
         <script type="text/javascript" src="js/navi_hover.js"></script> 
+        <style>
+            #main_height{
+                clear: both;
+            }
+        </style>
 	</head>
 	<body> 
 	 	
@@ -399,7 +404,8 @@
 						<dd>미리보는 쿡킷 전체 메뉴 (3月)</dd>
 					</dl>
 				</a>
-			</div>	 		
+			</div>
+            <div id="main_height"></div>	 		
 	 	</section>
         
 		<footer>

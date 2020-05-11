@@ -104,9 +104,13 @@ public class Edao {
 	public ArrayList<Edto> eventList(int page, int limit){
 		int endpost = page*limit;
 		int startpost = endpost - limit + 1;
+		
+		System.out.println(startpost);
+		System.out.println(endpost);
+		
 		sql="select * from "
 				+ "(select rownum rnum,eid,etitle,econtent,eimg_thumb,eimg_cont, eDate1, eDate2 from "
-				+ "(select * from event_board order by eid desc)) where rnum>=? and rnum<=? and edate2>=sysdate";
+				+ "(select * from event_board order by eid desc) where edate2>=sysdate) where rnum>=? and rnum<=?";
 		try {	
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -167,6 +171,28 @@ public class Edao {
 	
 	
 	//이하 어드민
+	
+	//어드민 이벤트 게시글 삭제
+	public int evDelete(int eId) {
+		int check = 0;
+		sql = "delete from event_board where eId=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, eId);
+			check = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return check;
+	}
 	
 	
 	//어드민 이벤트 게시글 수정

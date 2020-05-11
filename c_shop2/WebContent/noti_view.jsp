@@ -17,23 +17,27 @@
         <script type="text/javascript" src="js/prefixfree.dynamic-dom.min.js"></script>
         <script type="text/javascript" src="js/navi_hover.js"></script> 
 <style>
+#content_view{
+    overflow: auto;
+}
 .overflow_content{
     width:100%;
 }
-</style>
+</style>   
 </head>
 
 <body>
     <jsp:include page="module/navi.jsp"></jsp:include>
+    
     <section>
         <div id="description">
             <h1>
-                <a>이벤트</a>
+                <a href="sub_event_list.html">공지사항</a>
             </h1>
 
             <div>
                 <!--#description>div:nth-child(2)  -->
-                <h1>${ event.eTitle }</h1>
+                <h1>${ notice.ntitle }</h1>
 
                 <div>
                     <div>
@@ -43,22 +47,21 @@
                     <p>공유</p>
                 </div>
 
-                <p>${ event.eDate1 }~${event.eDate2 }
-                <p>
             </div>
 
             <div>
                 <!-- 이벤트 이미지 -->
-                <c:if test="${ not empty event.eImg_cont }">
-                    <img src="upload/${ event.eImg_cont }" class="overflow_content">
+                <c:if test="${ not empty notice.nattch }">
+                    <img src="upload/${ notice.nattch }" class="overflow_content">
                 </c:if>
+                <pre id="content_view">${ notice.ncontent }</pre>
             </div>
-            <div class="bottom_line">
-        </div>
         <!-- 목록 버튼 -->
+        <div class="bottom_line">
+        </div>
         <div id="button">
             <div>
-                <a href="eventlist.do">목록</a>
+                <a href="notilist.do">목록</a>
             </div>
         </div>
 
@@ -74,6 +77,5 @@
     
 </body>
 </html>
-
 
 

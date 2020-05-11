@@ -36,10 +36,32 @@ public class Ndao {
 	Ndto ndto;
 	ArrayList<Ndto> nlist = new ArrayList<Ndto>();
 	
+	
+	public int upHit(int nid) {
+		int check=0;
+		sql="update noti_board set nhit=nhit+1 where nid=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, nid);
+			check = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return check;
+	}
+	
+	
 	//공지 하나 가져오기
 	public Ndto notiview(int nid) {
-		System.out.println("nid : "+nid);
-		System.out.println("공지를 가지러 왔다.");
+		upHit(nid);
 		sql = "select * from noti_board where nid=?";
 		try {
 			conn = ds.getConnection();
@@ -67,6 +89,7 @@ public class Ndao {
 		}
 		return ndto;
 	}
+	
 	
 	//리스트 전체 출력하기
 	public ArrayList<Ndto> notilist(int page, int limit, String opt, String search){
@@ -213,7 +236,6 @@ public class Ndao {
 		}
 		return check;
 	}
-	
 	
 	//어드민 공지 수정 update
 	public int notiModi(int nid, String ntitle, String ncontent, String nattch) {

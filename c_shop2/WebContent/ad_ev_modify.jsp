@@ -15,11 +15,23 @@
 <script src="js/input_custom.js"></script>
 <script type="text/javascript" src="js/admin_header.js"></script> 
 
+<script>
+    function del_check(){
+        var result = confirm("게시글을 삭제하시겠습니까?");
+        if(result==true){
+            window.location.href='ad_ev_del.do?eId=${edto.eId}';
+        } else {
+            return false;
+        }
+    }
+</script>
+
 <style>
 #eTitle{
     width: 600px;
 }
 </style>
+
 </head>
 <body>
  
@@ -97,6 +109,7 @@
         <div class="bttn_set">
           <button onclick="location.href='ad_main.do'">취소</button>
           <button type="submit">확인</button>
+          <button type="button" onclick="del_check();">삭제</button>
         </div>
 
       </form>

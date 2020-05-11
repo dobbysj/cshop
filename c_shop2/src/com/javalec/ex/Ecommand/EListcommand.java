@@ -38,7 +38,7 @@ public class EListcommand implements Ecommand {
 		//출력 관련
 		ArrayList<Edto> elist = new ArrayList<Edto>();
 		elist = edao.eventList(page, limit);
-		
+		System.out.println(elist.size());
 		//리퀘스트에 담아 보내기
 		request.setAttribute("elist", elist);
 		request.setAttribute("page", page);

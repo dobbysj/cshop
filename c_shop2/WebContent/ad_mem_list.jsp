@@ -40,33 +40,49 @@
 	<body>
 	
     <jsp:include page="module/ad_navi.jsp"></jsp:include>
-    <jsp:include page="module/ad_navi_board.jsp"/> 
+    <jsp:include page="module/ad_navi_member.jsp"/> 
     
     
 	<section>
-		<h1>전체 공지 리스트</h1>
+		<h1>전체 회원 리스트</h1>
 		<div id="main_list">
 			<div id="main_user_list">
-				<div class="list_count">총 게시글 수 :${ listcount }</div>
+				<div class="list_count">총 회원 수 :${ listcount }</div>
 				<div>
 					<table border="1">
 						<tr>
 							<th>No.</th>
+							<th>고유번호</th>
 							<th>ID</th>
-							<th>제목</th>
-							<th>날짜</th>
-							<th>조회수</th>
-							<th>첨부파일</th>
+							<th>이름</th>
+							<th>이메일</th>
+							<th>우편번호</th>
+							<th>주소1</th>
+							<th>주소2</th>
+							<th>전화번호</th>
+							<th>생년월일</th>
+							<th>성별</th>
+							<th>News</th>
+							<th>SMS</th>
+							<th>가입일</th>
 						</tr>
                         
-                        <c:forEach var="nlist" items="${ nlist }">
+                        <c:forEach var="mlist" items="${ mlist }">
     						<tr>
-    							<td>${ nlist.nrnum }</td>
-    							<td>${ nlist.nid }</td>
-    							<td><a href="ad_noti_modify.do?nid=${ nlist.nid }">${ nlist.ntitle }</a></td>
-    							<td>${ nlist.ndate }</td>
-    							<td>${ nlist.nhit }</td>
-    							<td><a href="${pageContext.request.contextPath }/upload/${nlist.nattch}">${ nlist.nattch }</a></td>
+    							<td>${ mlist.mrnum }</td>
+    							<td>${ mlist.mnum }</td>
+    							<td>${ mlist.mid }</td>
+    							<td>${ mlist.mname }</td>
+    							<td>${ mlist.memail }@${mlist.memail2 }</td>
+    							<td>${ mlist.mzonecode }</td>
+    							<td>${ mlist.maddress1 }</td>
+    							<td>${ mlist.maddress2 }</td>
+    							<td>${ mlist.mphone1 }-${ mlist.mphone2 }-${ mlist.mphone3 }</td>
+    							<td>${ mlist.mbirth }</td>
+    							<td>${ mlist.mgender }</td>
+    							<td>${ mlist.mnews }</td>
+    							<td>${ mlist.msms }</td>
+    							<td>${ mlist.mjoindate }</td>
     						</tr>
                         
                         </c:forEach>
@@ -110,7 +126,7 @@
             </ul>
         </div>
 
-        <div class="button_array"><a href="notiregiview.do"><span class="input_button">공지 등록</span></a></div>
+        <div class="button_array"><a href="joinview.do"><span class="input_button">회원 등록</span></a></div>
 
 
 

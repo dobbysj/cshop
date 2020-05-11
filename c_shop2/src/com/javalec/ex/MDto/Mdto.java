@@ -5,7 +5,10 @@ import java.sql.Timestamp;
 public class Mdto {
 
 	public Mdto() {}
-	public Mdto(String mname, String mid, String mpw, String memail, String memail2, int mzonecode, String maddress1, String maddress2, int mphone1, int mphone2, int mphone3, Timestamp mbirth, String mgender, String mnews, String msms) {
+	public Mdto(int mnum, Timestamp mjoindate, String mname, String mid, String mpw, String memail, String memail2, int mzonecode, String maddress1, String maddress2, int mphone1, int mphone2, int mphone3, Timestamp mbirth, String mgender, String mnews, String msms) {
+//		this.mrnum=mrnum;
+		this.mnum=mnum;
+		this.mjoindate=mjoindate;
 		this.mname=mname;
 		this.mid=mid;
 		this.mpw=mpw;
@@ -25,8 +28,27 @@ public class Mdto {
 	
 	String mname,mid,mpw,memail,memail2,maddress1,maddress2,mgender,mnews,msms;
 	int mzonecode,mphone1,mphone2,mphone3;
-	Timestamp mbirth;
+	Timestamp mbirth, mjoindate;
+	int mrnum, mnum;
 	
+	public Timestamp getMjoindate() {
+		return mjoindate;
+	}
+	public void setMjoindate(Timestamp mjoindate) {
+		this.mjoindate = mjoindate;
+	}
+	public int getMnum() {
+		return mnum;
+	}
+	public void setMnum(int mnum) {
+		this.mnum = mnum;
+	}
+	public int getMrnum() {
+		return mrnum;
+	}
+	public void setMrnum(int mrnum) {
+		this.mrnum = mrnum;
+	}
 	public String getMname() {
 		return mname;
 	}

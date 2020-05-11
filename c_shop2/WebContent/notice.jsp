@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<jsp:useBean id="now" class="java.util.Date" />
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +16,20 @@
         <script type="text/javascript" src="js/prefixfree.dynamic-dom.min.js"></script>
         <script type="text/javascript" src="js/navi_hover.js"></script>
         <link rel="stylesheet" type="text/css" href="css/style_main.css">
+        <style>
+            .noti_paging li{
+                display: inline-block;
+            }
+            #search_form{
+                text-align: center;
+            }
+            .text_color_green{
+                color:#BDD61A;
+            }
+            .bottom_border{
+                border-bottom: 4px solid black;
+            }
+        </style>
 </head>
     <body>
         
@@ -21,15 +38,7 @@
         
         
         <section>
-        <form action="search.do" name="bsearch" method="get">
-            <select name="opt">
-                <option value="all">전체</option>
-                <option value="tit">제목</option>
-                <option value="cont">내용</option>
-            </select>
-            <input type="text" name="search">
-            <input type="submit" value="검색">                
-        </form>
+        
             <div>
                 <h1>공지사항</h1>
                 <div>
@@ -54,49 +63,65 @@
                             <!-- db에서 받아오기 -->
                                 <tr>
                                     <td>${nlist.nrnum }</td>
-                                    <td>${nlist.ntitle }</td>
-                                    <td>${nlist.ndate }</td>
+                                    <td><a href="notice_view.do?nid=${nlist.nid }">${nlist.ntitle }</a></td>
+                                    <!-- 날짜비교 -->
+                                    <fmt:formatDate value="${now}" pattern="yyyy/MM/dd" var="today" />
+                                    <fmt:formatDate value="${ nlist.ndate }" pattern="yyyy/MM/dd" var="date_type" />
+                                    <fmt:formatDate value="${ nlist.ndate }" pattern="hh:mm:ss" var="time_type"/>
+                                    <c:if test="${ date_type < today }">
+                                        <td>
+                                            ${ date_type }
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${ date_type >= today }">
+                                        <td>
+                                            ${ time_type }
+                                        </td>
+                                    </c:if>
+
+
+
                                     <td>${nlist.nhit }</td>
                                 </tr>
                             </c:forEach>
                         </table>
+                        <div class="bottom_border"></div>
                         
                     </div>
                     <div>
-                        <span>
-                            <a href="#">입력</a>
-                        </span>
                     </div>
-                        
-                    <div>
+                       <!-- 원래 입력버튼 있던 곳 --> 
+                    <div class="noti_paging">
                     <c:choose>
                         <c:when test="${ searchflag!=null }">
                             <ul>
                                 <a href="notilist.do?opt=${ opt }&search=${ search }&page=1"><li> 처음 </li></a>
                                 <c:if test="${ page<=1 }">
-                                    <li> 이전 </li>
+                                    <li>&nbsp;&nbsp;이전&nbsp;&nbsp;</li>
                                 </c:if>
                                 <c:if test="${ page>1 }">
-                                    <a href="notilist.do?opt=${ opt }&search=${ search }&page=${page-1}"><li>이전</li></a>
+                                    <a href="notilist.do?opt=${ opt }&search=${ search }&page=${page-1}"><li>&nbsp;&nbsp;이전 &nbsp;&nbsp;</li></a>
                                 </c:if>
                                 <c:forEach var="a" begin="${ startpage }" end="${ endpage }" step="1">
                                     <c:choose>
                                         <c:when test="${ a == page }">
-                                            <li>${ a }</li>
+                                            <li> ${ a } </li>
                                         </c:when>
                                         <c:when test="${ a != page }">
-                                            <a href="notilist.do?opt=${ opt }&search=${ search }&page=${a}"><li>${ a }</li></a>
+                                            <a href="notilist.do?opt=${ opt }&search=${ search }&page=${a}"><li> ${ a } </li></a>
                                         </c:when>
                                     </c:choose>
                                 </c:forEach>
                                 <c:if test="${ page>=maxpage }">
-                                    <li>다음</li>
+                                    <li>&nbsp;&nbsp;다음&nbsp;&nbsp;</li>
                                 </c:if>
                                 <c:if test="${ page<maxpage }">
-                                    <a href="notilist.do?opt=${ opt }&search=${ search }&page=${page+1}"><li>다음</li></a>
+                                    <a href="notilist.do?opt=${ opt }&search=${ search }&page=${page+1}"><li>&nbsp;&nbsp;다음&nbsp;&nbsp;</li></a>
                                 </c:if>
-                                <a href="notilist.do?opt=${ opt }&search=${ search }&page=${maxpage}"><li>마지막</li></a>
+                                <a href="notilist.do?opt=${ opt }&search=${ search }&page=${maxpage}"><li> 마지막 </li></a>
+                                <a href="notilist.do"><li class="text_color_green"> &nbsp;&nbsp;&nbsp;리스트로 돌아가기</li></a>
                             </ul>
+                            
                         </c:when>
                         <c:otherwise>
                             <ul>
@@ -129,7 +154,17 @@
                         </c:otherwise>
                     </c:choose>
                     </div>
-                </div>
+
+                <form action="search.do" name="bsearch" method="get" id="search_form">
+                    <select name="opt">
+                        <option value="all">전체</option>
+                        <option value="tit">제목</option>
+                        <option value="cont">내용</option>
+                    </select> <input type="text" name="search"> <input
+                        type="submit" value="검색">
+                </form>
+
+            </div>
             </div>
         </section>
         

@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+#main_list{
+/*     height: 0px; */
+}
+
 #main_list2{
 	padding: 20px;
 }

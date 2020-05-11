@@ -16,7 +16,7 @@ public class Joinokcommand implements Ecommand {
 		Mdao mdao = new Mdao();
 		String mname = request.getParameter("mname");
 		String mid = request.getParameter("mid");
-		String mpw = request.getParameter("mid");
+		String mpw = request.getParameter("mpw");
 		String memail = request.getParameter("memail");
 		String memail2= request.getParameter("memail2");
 		String maddress1= request.getParameter("maddress1");

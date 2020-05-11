@@ -12,7 +12,30 @@
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/prefixfree.dynamic-dom.min.js"></script>
         <script type="text/javascript" src="js/admin_header.js"></script> 
-	</head>
+	    <style>
+            #page_num{
+                text-align: center;
+                margin-top: 11px;
+            }
+            #page_num li{
+                display: inline-block;
+            }
+            .input_button{
+                display: inline-block;
+                width: 85px;
+                height: 32px;
+                text-align: center;
+                padding-top: 8px;
+                border: 1px solid black;
+                font-size: 13px;
+                color: black;
+            }
+            .button_array{
+                text-align: right;
+            }
+        </style>
+    
+    </head>
 	<body>
 	
     <jsp:include page="module/ad_navi.jsp"></jsp:include>
@@ -26,11 +49,19 @@
 				<div class="list_count">총 게시글 수 :${ listcount } / 진행 중 이벤트 : ${ inprog_lc } / 종료된 이벤트 : ${ end_lc }</div>
 				<div>
 					<table border="1">
+                        <colgroup>
+                            <col width="2%" />
+                            <col width="5%" />
+                            <col width="*" />
+                            <col width="15%" />
+                            <col width="15%" />
+                            <col width="15%" />
+                            <col width="15%" />
+                        </colgroup>
 						<tr>
 							<th>No.</th>
 							<th>이벤트 아이디</th>
 							<th>제목</th>
-							<th>내용</th>
 							<th>썸네일</th>
 							<th>이미지</th>
 							<th>시작일</th>
@@ -42,7 +73,6 @@
     							<td>${ elist2.rnum }</td>
     							<td>${ elist2.eId }</td>
     							<td><a href="ad_ev_modify.do?eId=${ elist2.eId }">${ elist2.eTitle }</a></td>
-    							<td>${ elist2.eContent }</td>
     							<td>${ elist2.eImg_thumb }</td>
     							<td>${ elist2.eImg_cont }</td>
     							<td>${ elist2.eDate1 }</td>
@@ -89,8 +119,8 @@
 			                </a>
 			            </ul>
 			        </div>
-			
-			        <div><a href="eventregiview.do">이벤트 등록</a></div>
+
+                    <div class="button_array"><a href="eventregiview.do"><span class="input_button">이벤트 등록</span></a></div>
 
 
 

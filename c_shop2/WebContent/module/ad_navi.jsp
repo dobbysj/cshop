@@ -47,7 +47,7 @@
             <ul>
                 <li><a href="#"><span></span>커뮤니티</a></li>
                 <li><a href="#"><span></span>환경설정</a></li>
-                <li><a href="#"><span></span>회원/강사</a></li>
+                <li><a href="ad_mem_list.do"><span></span>회원관리</a></li>
                 <li><a href="#"><span></span>상품/결제(신청)</a></li>
                 <li><a href="#"><span></span>수업/스케쥴</a>
                     <ul class="sub_list">
@@ -63,12 +63,11 @@
                         <li><a href="#">임시 리스트3</a></li>
                      </ul>
                 </li>
-                <li><a href="#"><span></span>홈페이지</a>
+                <li><a href="#"><span></span>게시판</a>
                     <ul class="sub_list">
                     <li><a href="ad_noti_list.do">공지사항 관리</a></li>
                     <li><a href="ad_ev_list.do">이벤트  관리</a></li>
-                    <li><a href="#">회원 관리</a></li>
-                     </ul>
+                    </ul>
                 </li>
                 <li><a href="#"><span></span>회계관리</a>
                     <ul class="sub_list">

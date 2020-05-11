@@ -28,8 +28,7 @@ public class EAdModifycommand implements Ecommand {
 		String eDate2="";
 		String eDate12="";
 		String eDate22="";
-		String path = "/Users/soojilee/upload";
-//		"Z:/upload"; 
+		String path = "Z:/upload";
 		int size = 1024 * 1024 * 10;
 		
 		try {
@@ -38,14 +37,11 @@ public class EAdModifycommand implements Ecommand {
 			eTitle = multi.getParameter("eTitle");
 			eContent = multi.getParameter("eContent");
 			
-			eDate1 = multi.getParameter("eDate1");
-			System.out.println("eDate1의 값입니다..."+eDate1);
-			eDate12 = multi.getParameter("eDate12");
-			System.out.println("eDate12의 값입니다..."+eDate12);
-			if(eDate1.equals("")) {
-				eDate1 = eDate12;
+			eDate1 = multi.getParameter("eDate1");//시작날짜 새로 받은거
+			eDate12 = multi.getParameter("eDate12");//시작날짜 기존거
+			if(eDate1.equals("")) {//만약 새로 받은게 없으면
+				eDate1 = eDate12;//기존거넣기
 			}
-			System.out.println("eDate1값...."+eDate1);
 			
 			eDate2 = multi.getParameter("eDate2");
 			if(eDate2.equals("")) {

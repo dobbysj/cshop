@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.javalec.ex.Admincommand.AdLogincommand;
 import com.javalec.ex.Admincommand.AdLogoutcommand;
 import com.javalec.ex.Admincommand.Maincommand;
+import com.javalec.ex.Ecommand.EAdDelcommand;
 import com.javalec.ex.Ecommand.EAdListcommand;
 import com.javalec.ex.Ecommand.EAdModiViewcommand;
 import com.javalec.ex.Ecommand.EAdModifycommand;
@@ -23,12 +24,14 @@ import com.javalec.ex.Jcommand.JoinCheckcommand;
 import com.javalec.ex.Jcommand.Joinokcommand;
 import com.javalec.ex.Lcommand.Logincommand;
 import com.javalec.ex.Lcommand.Logoutcommand;
+import com.javalec.ex.Mcommand.MAdListcommand;
 import com.javalec.ex.Ncommand.NAdDelcommand;
 import com.javalec.ex.Ncommand.NAdListcommand;
 import com.javalec.ex.Ncommand.NAdModiViewcommand;
 import com.javalec.ex.Ncommand.NAdModifycommand;
 import com.javalec.ex.Ncommand.NRegicommand;
 import com.javalec.ex.Ncommand.Nlistcommand;
+import com.javalec.ex.Ncommand.Nviewcommand;
 
 @WebServlet("*.do")
 public class EFront extends HttpServlet {
@@ -117,6 +120,15 @@ public class EFront extends HttpServlet {
 		} 
 		
 		
+		//어드민 회원관리
+		if(com.equals("/ad_mem_list.do")) {
+			ecmd = new MAdListcommand();
+			ecmd.execute(request, response);
+			pageView = "ad_mem_list.jsp";
+		}
+		
+		
+		
 		//이벤트
 		if(com.equals("/eventlist.do")) {
 			ecmd = new EListcommand();
@@ -144,10 +156,10 @@ public class EFront extends HttpServlet {
 			ecmd = new EViewcommand();
 			ecmd.execute(request, response);
 			pageView = "event_view.jsp"; //이벤트 상세
-		} else if(com.equals("/evDel.do")) {
-//			ecmd = new EAdDelcommand();
-//			ecmd.execute(request, response);
-//			pageView = "ad_event_list.do";
+		} else if(com.equals("/ad_ev_del.do")) {
+			ecmd = new EAdDelcommand();
+			ecmd.execute(request, response);
+			pageView = "ad_ev_list.do";
 		}
 		
 		//공지관련
@@ -183,7 +195,11 @@ public class EFront extends HttpServlet {
 			pageView = "ad_noti_list.do"; //어드민 공지 삭제 후 어드민 공지 리스트로 이동
 		} else if(com.equals("/ad_main.do")) {
 			pageView = "ad_main.jsp"; //어드민 메인 
-		} 
+		} else if(com.equals("/notice_view.do")) {
+			ecmd = new Nviewcommand();
+			ecmd.execute(request, response);
+			pageView = "noti_view.jsp";
+		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(pageView);

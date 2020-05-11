@@ -149,11 +149,15 @@ section>div>h1 {
 	line-height: 56px;
 }
 
-section>div>div>div:nth-child(1) {
+.bottom_line {
 	width: 1180px;
 	margin-top: 62px;
 	border-top: 2px solid #202020;
 	border-bottom: 1px solid #e6e6e6;
+}
+
+#button{
+    float: right;
 }
 
 section>div>div>div:nth-child(1)>table {

@@ -16,22 +16,13 @@
 <body>
 
      <nav>
-        <h2><em></em>게시판</h2>
+        <h2><em></em>회원관리</h2>
         <div  id="student" class="user">
-            <a>공지사항<span id="s_icon" class="icon_minus"></span></a>
+            <a>회원관리<span id="s_icon" class="icon_minus"></span></a>
             <div id="stu_list">
                 <ul>
-                    <li><a href="ad_noti_list.do"><img src="images/icon_title_left.png">공지 리스트</a></li>
-                    <li><a href="notiregiview.do"><img src="images/icon_title_left.png">공지 등록</a></li>
-                </ul>
-            </div>
-        </div>
-        <div  id="teacher" class="user">
-            <a>이벤트<span id="t_icon" class="icon_minus2"></span></a>
-            <div id="tes_list">
-                <ul>
-                    <li><a href="ad_ev_list.do"><img src="images/icon_title_left.png">이벤트 리스트</a></li>
-                    <li><a href="eventregiview.do"><img src="images/icon_title_left.png">이벤트 등록</a></li>
+                    <li><a href="ad_mem_list.do"><img src="images/icon_title_left.png">회원 리스트</a></li>
+                    <li><a href="#"><img src="images/icon_title_left.png">회원 등록</a></li>
                 </ul>
             </div>
         </div>
