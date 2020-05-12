@@ -22,7 +22,8 @@ public class NAdModifycommand implements Ecommand {
 		String ncontent = "";
 		String nattch = "";
 		String nattch_origin= "";
-		String path = "Z:/upload";
+		String path = "/Users/soojilee/upload";
+//		String path = "Z:/upload";
 		int size = 1024 * 1024 * 10;
 		
 		try {

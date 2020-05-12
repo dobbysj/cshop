@@ -19,7 +19,8 @@ public class NRegicommand implements Ecommand {
 		
 		String ntitle = "";
 		String ncontent = "";
-		String path = "Z:/upload";
+		String path = "/Users/soojilee/upload";
+//		String path = "Z:/upload";
 		int size = 1024 * 1024 * 10;
 		String nattch ="";
 		

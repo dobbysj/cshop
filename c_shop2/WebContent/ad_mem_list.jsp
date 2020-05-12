@@ -93,13 +93,13 @@
         <div id="page_num">
             
             <ul class="page_num">
-                <a href="ad_noti_list.do?page=1"><li class = "first"><<</li></a>
+                <a href="ad_mem_list.do?page=1"><li class = "first"><<</li></a>
                 
                 <c:if test="${ page<=1 }">
                      <li class = "prev"><</li>
                 </c:if>
                 <c:if test="${ page>1 }">
-                    <a href="ad_noti_list.do?page=${ page-1 }"><li class = "prev"><</li></a>
+                    <a href="ad_mem_list.do?page=${ page-1 }"><li class = "prev"><</li></a>
                 </c:if>
                 
                 <c:forEach var="a" begin="${ startpage }" end="${ endpage }" step="1">
@@ -108,7 +108,7 @@
                             <li class = "num"><div>${ a }</div></li>
                         </c:when>
                         <c:when test="${ a != page }">
-                            <a href="ad_noti_list.do?page=${ a }"><li class = "num"><div>${ a }</div></li></a>
+                            <a href="ad_mem_list.do?page=${ a }"><li class = "num"><div>${ a }</div></li></a>
                         </c:when>
                     </c:choose>
                 </c:forEach>
@@ -117,10 +117,10 @@
                     <li class = "next">></li>
                 </c:if>
                 <c:if test="${ page<maxpage }">
-                    <a href="ad_noti_list.do?page=${ page+1 }"><li class = "next">></li></a>
+                    <a href="ad_mem_list.do?page=${ page+1 }"><li class = "next">></li></a>
                 </c:if>
                 
-                <a href="ad_noti_list.do?page=${ maxpage }">
+                <a href="ad_mem_list.do?page=${ maxpage }">
                     <li class = "last">>></li>
                 </a>
             </ul>

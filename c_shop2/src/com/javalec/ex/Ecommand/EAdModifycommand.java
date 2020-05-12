@@ -28,7 +28,8 @@ public class EAdModifycommand implements Ecommand {
 		String eDate2="";
 		String eDate12="";
 		String eDate22="";
-		String path = "Z:/upload";
+		String path = "/Users/soojilee/upload";
+//		String path = "Z:/upload";
 		int size = 1024 * 1024 * 10;
 		
 		try {
